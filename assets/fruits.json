@@ -1,0 +1,66 @@
+{
+  "model_name": "FRUIT LAB",
+  "category_name": "INTERACTIVE DEVELOPMENT",
+  "default_scale": 0.80,
+  "default_rotation": [0.0, 0.0, 0.0],
+  "components": [
+    {
+      "id": "red_apple",
+      "name": "RED APPLE",
+      "short": "A red apple with its own stem and leaf.",
+      "description": "Find the matching APPLE target, or resize the apple to its silhouette.",
+      "selectors": {"nodes": ["Apple_Material.002_0", "Stem.001_Material.001_0", "Stem.002_Material.001_0", "Leaf_Material_0"]}
+    },
+    {
+      "id": "green_apple",
+      "name": "GREEN APPLE",
+      "short": "A green apple kept separate from its red parent object.",
+      "description": "The original model nests this fruit under Apple; Lumen groups its authored pieces logically without changing the GLB.",
+      "selectors": {"ancestors": ["Apple.001"]}
+    },
+    {
+      "id": "banana_1",
+      "name": "BANANA",
+      "short": "One of three separately movable bananas.",
+      "description": "Match this banana to a BANANA target.",
+      "selectors": {"ancestors": ["Banana"]}
+    },
+    {
+      "id": "banana_2",
+      "name": "BANANA",
+      "short": "One of three separately movable bananas.",
+      "description": "Match this banana to a BANANA target.",
+      "selectors": {"ancestors": ["Banana.001"]}
+    },
+    {
+      "id": "banana_3",
+      "name": "BANANA",
+      "short": "One of three separately movable bananas.",
+      "description": "Match this banana to a BANANA target.",
+      "selectors": {"ancestors": ["Banana.002"]}
+    },
+    {
+      "id": "orange",
+      "name": "ORANGE",
+      "short": "An orange with its authored materials intact.",
+      "description": "The misplaced Leaf.003 piece is associated with this fruit only in Lumen metadata.",
+      "selectors": {"ancestors": ["Orange"], "nodes": ["Leaf.003_Material_0"]}
+    },
+    {
+      "id": "pear",
+      "name": "PEAR",
+      "short": "A pear with its authored color and materials intact.",
+      "description": "Match this pear to the PEAR target, or scale it to the silhouette.",
+      "selectors": {"nodes": ["Pear_Material.010_0", "Pear_Material.009_0", "Pear_Pear_0", "Leaf.002_Material_0"]}
+    }
+  ],
+  "objects": [
+    {"id": "red_apple", "selectors": {"nodes": ["Apple_Material.002_0", "Stem.001_Material.001_0", "Stem.002_Material.001_0", "Leaf_Material_0"]}},
+    {"id": "green_apple", "selectors": {"ancestors": ["Apple.001"]}},
+    {"id": "banana_1", "selectors": {"ancestors": ["Banana"]}},
+    {"id": "banana_2", "selectors": {"ancestors": ["Banana.001"]}},
+    {"id": "banana_3", "selectors": {"ancestors": ["Banana.002"]}},
+    {"id": "orange", "selectors": {"ancestors": ["Orange"], "nodes": ["Leaf.003_Material_0"]}},
+    {"id": "pear", "selectors": {"nodes": ["Pear_Material.010_0", "Pear_Material.009_0", "Pear_Pear_0", "Leaf.002_Material_0"]}}
+  ]
+}

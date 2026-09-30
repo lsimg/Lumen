@@ -1,0 +1,61 @@
+{
+  "model_name": "ROBOTIC ARM",
+  "category_name": "ROBOTICS / ENGINEERING",
+  "default_scale": 0.82,
+  "default_rotation": [0.0, 0.0, 0.0],
+  "components": [
+    {
+      "id": "gripper", "name": "GRIPPER", "short": "End effector for grasping objects.",
+      "description": "The gripper opens and closes around its configured hinge while preserving the original robot geometry.",
+      "fields": {"TYPE": "End effector", "FUNCTION": "Grasps and releases objects"},
+      "selectors": {"ancestors": ["roboarm.002_low_1"]}
+    },
+    {
+      "id": "base", "name": "BASE JOINT", "short": "Rotates the complete arm around its vertical axis.",
+      "description": "The base is the root of the serial joint chain, so every downstream joint follows it.",
+      "fields": {"TYPE": "Rotational joint", "FUNCTION": "Turns the full robotic arm"},
+      "selectors": {"ancestors": ["robot_base.031_low_59", "robot_base.025_low_53", "robot_base.018_low_38", "robot_base.009_low_37"]}
+    },
+    {
+      "id": "shoulder", "name": "SHOULDER JOINT", "short": "Raises and lowers the arm.",
+      "description": "The shoulder carries the elbow, wrist, and gripper as child links.",
+      "fields": {"TYPE": "Rotational joint", "FUNCTION": "Controls elevation and reach"},
+      "selectors": {"ancestors": ["robot_base.033_low_62", "robot_base.030_low_58", "robot_base.029_low_57", "robot_base.024_low_52", "robot_base.023_low_50", "robot_base.022_low_49", "robot_base.021_low_48", "robot_base.019_low_47", "robot_base.017_low_45", "robot_base.016_low_44", "robot_base.011_low_39", "robot_base.008_low_36"]}
+    },
+    {
+      "id": "elbow", "name": "ELBOW JOINT", "short": "Controls extension and positioning of the arm.",
+      "description": "Bending the elbow changes the reach while carrying both wrist joints and the gripper.",
+      "fields": {"TYPE": "Rotational joint", "FUNCTION": "Controls extension and positioning"},
+      "selectors": {"ancestors": ["robot_base.035_low_63", "robot_base.028_low_56", "robot_base.026_low_54", "robot_base_low_51", "robot_base.020_low_46", "robot_base.014_low_42", "robot_base.013_low_41", "robot_base.004_low_33"]}
+    },
+    {
+      "id": "wrist_pitch", "name": "WRIST PITCH", "short": "Tilts the end effector.",
+      "description": "Wrist pitch aims the gripper up or down while preserving the serial hierarchy.",
+      "fields": {"TYPE": "Rotational joint", "FUNCTION": "Tilts the gripper"},
+      "selectors": {"ancestors": ["robot_base.027_low_55", "robot_base.015_low_43", "robot_base.012_low_40", "robot_base.006_low_35", "robot_base.005_low_34", "robot_base.003_low_32", "robot_base.002_low_31"]}
+    },
+    {
+      "id": "wrist_roll", "name": "WRIST ROLL", "short": "Rotates the end effector around its longitudinal axis.",
+      "description": "Wrist roll changes tool orientation; the gripper remains attached as its child.",
+      "fields": {"TYPE": "Rotational joint", "FUNCTION": "Rotates the gripper"},
+      "selectors": {"ancestors": ["robot_base.007_low_61", "roboarm_low_28", "roboarm.028_low_27", "roboarm.027_low_26", "roboarm.026_low_25", "roboarm.025_low_24", "roboarm.024_low_23", "roboarm.023_low_22", "roboarm.022_low_21", "roboarm.021_low_20", "roboarm.020_low_19", "roboarm.019_low_18", "roboarm.018_low_17", "roboarm.017_low_16", "roboarm.016_low_15", "roboarm.015_low_14", "roboarm.014_low_13", "roboarm.013_low_12", "roboarm.012_low_11", "roboarm.011_low_10", "roboarm.010_low_9", "roboarm.009_low_8", "roboarm.008_low_7", "roboarm.007_low_6", "roboarm.006_low_5", "roboarm.005_low_4", "roboarm.004_low_3", "roboarm.003_low_2", "roboarm.001_low_0"]}
+    }
+  ],
+  "robotics": {
+    "joint_control_gain": 0.55,
+    "joint_max_speed": 90.0,
+    "pinch_confirm_seconds": 0.28,
+    "pinch_confirm_frames": 3,
+    "release_seconds": 0.08,
+    "mode_cooldown_seconds": 0.23,
+    "demo_segment_seconds": 3.2,
+    "joints": [
+      {"id": "base", "name": "Base", "parent": null, "pivot": [-0.441395, -0.5545, -0.091908], "axis": [0.0, 1.0, 0.0], "min": -170.0, "max": 170.0, "control": "horizontal", "sensitivity": 250.0, "response_seconds": 0.075, "members": ["robot_base.031_low_59", "robot_base.025_low_53", "robot_base.018_low_38", "robot_base.009_low_37"]},
+      {"id": "shoulder", "name": "Shoulder", "parent": "base", "pivot": [-0.247011, -0.273151, 0.058332], "axis": [0.7908, 0.0, 0.6121], "min": -95.0, "max": 95.0, "control": "vertical", "sensitivity": 230.0, "response_seconds": 0.080, "members": ["robot_base.033_low_62", "robot_base.030_low_58", "robot_base.029_low_57", "robot_base.024_low_52", "robot_base.023_low_50", "robot_base.022_low_49", "robot_base.021_low_48", "robot_base.019_low_47", "robot_base.017_low_45", "robot_base.016_low_44", "robot_base.011_low_39", "robot_base.008_low_36"]},
+      {"id": "elbow", "name": "Elbow", "parent": "shoulder", "pivot": [0.253713, 0.443597, -0.695104], "axis": [0.7908, 0.0, 0.6121], "min": -135.0, "max": 20.0, "control": "vertical", "sensitivity": 240.0, "response_seconds": 0.075, "members": ["robot_base.035_low_63", "robot_base.028_low_56", "robot_base.026_low_54", "robot_base_low_51", "robot_base.020_low_46", "robot_base.014_low_42", "robot_base.013_low_41", "robot_base.004_low_33"]},
+      {"id": "wrist_pitch", "name": "WristPitch", "parent": "elbow", "pivot": [-0.288070, 0.599355, -0.028453], "axis": [0.7908, 0.0, 0.6121], "min": -110.0, "max": 110.0, "control": "vertical", "sensitivity": 250.0, "response_seconds": 0.065, "members": ["robot_base.027_low_55", "robot_base.015_low_43", "robot_base.012_low_40", "robot_base.006_low_35", "robot_base.005_low_34", "robot_base.003_low_32", "robot_base.002_low_31"]},
+      {"id": "wrist_roll", "name": "WristRoll", "parent": "wrist_pitch", "pivot": [-0.170819, 0.227030, 0.343599], "axis": [0.7908, 0.0, 0.6121], "min": -180.0, "max": 180.0, "control": "horizontal", "sensitivity": 280.0, "response_seconds": 0.060, "members": ["robot_base.007_low_61", "roboarm_low_28", "roboarm.028_low_27", "roboarm.027_low_26", "roboarm.026_low_25", "roboarm.025_low_24", "roboarm.024_low_23", "roboarm.023_low_22", "roboarm.022_low_21", "roboarm.021_low_20", "roboarm.020_low_19", "roboarm.019_low_18", "roboarm.018_low_17", "roboarm.017_low_16", "roboarm.016_low_15", "roboarm.015_low_14", "roboarm.014_low_13", "roboarm.013_low_12", "roboarm.012_low_11", "roboarm.011_low_10", "roboarm.010_low_9", "roboarm.009_low_8", "roboarm.008_low_7", "roboarm.007_low_6", "roboarm.006_low_5", "roboarm.005_low_4", "roboarm.004_low_3", "roboarm.003_low_2", "roboarm.002_low_1", "roboarm.001_low_0"]}
+    ],
+    "gripper": {"node_label": "roboarm.002_low_1", "response_seconds": 0.065, "deform_start_x": -0.178852, "deform_end_x": -0.27, "hinge_y": 0.027204, "hinge_z": 0.052931, "closed_angle_degrees": 9.0}
+  }
+}
